@@ -36,7 +36,9 @@ good-names=df, i
 # C0116 : Missing function or method docstring (missing-function-docstring)
 # F0010 : error while code parsing: Unable to load file __init__.py (parse-error)
 # R0903 : Too few public methods (too-few-public-methods)
-disable=C0114,C0115,C0116,F0010,R0903
+# W0223 : Method %r is abstract in class %r but is not overridden in child class %r (abstract-method)
+# W0237 : Parameter 'a_parameter' has been renamed to 'another_parameter' in overriding 'Class.method' method (arguments-renamed)
+disable=C0114,C0115,C0116,F0010,R0903,W0223,W0237
 
 
 

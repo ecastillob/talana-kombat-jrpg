@@ -154,6 +154,7 @@ REST_FRAMEWORK = {
 }
 
 # Kombat config
-MAX_PLAYER_ENERGY = config("DEBUG", default=6, cast=int)
+MAX_PLAYER_ENERGY = config("MAX_PLAYER_ENERGY", default=6, cast=int)
+MAX_MOVEMENT_LENGTH = config("MAX_MOVEMENT_LENGTH", default=5, cast=int)
 PLAYER_1_NAME = config("PLAYER_1_NAME", default="Tonyn")
 PLAYER_2_NAME = config("PLAYER_2_NAME", default="Arnaldor")

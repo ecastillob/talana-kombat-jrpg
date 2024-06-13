@@ -19,6 +19,7 @@ class TalanaKombat:
             movements=player1["movimientos"],
             hits=player1["golpes"],
             special_movements=(
+                # movement, hit, damage, name
                 ("DSD", "P", 3, "Taladoken"),
                 ("SD", "K", 2, "Remuyuken"),
                 ("", "P", 1, "Puño"),
@@ -30,6 +31,7 @@ class TalanaKombat:
             movements=player2["movimientos"],
             hits=player2["golpes"],
             special_movements=(
+                # movement, hit, damage, name
                 ("SA", "K", 3, "Remuyuken"),
                 ("ASA", "P", 2, "Taladoken"),
                 ("", "P", 1, "Puño"),
@@ -38,6 +40,8 @@ class TalanaKombat:
         )
         self.starts_player1 = False
         self.starts_player2 = False
+        self.movements = []
+        self.winner = {}
 
     def _define_start_player(self):
         player1_moves, player1_hits = self.player1.movements, self.player1.hits
@@ -61,45 +65,45 @@ class TalanaKombat:
 
     def kombat(self):
         self._define_start_player()
-        movements = []
         while True:
             if self.starts_player1:
                 self.starts_player2 = True
                 if self.player1.movements:
-                    p1_move = self.player1.movements.popleft()
-                    p1_hit = self.player1.hits.popleft()
-                    if p1_move and not p1_hit:
-                        movements.append(f"{self.player1.name} se mueve")
-                    else:
-                        for move, hit, damage, name in self.player1.special_movements:
-                            if p1_move.endswith(move) and p1_hit == hit:
-                                self.player2.energy -= damage
-                                movements.append(f"{self.player1.name} da un {name}")
-                                break
-                    if self.player2.energy <= 0:
-                        movements.append(
-                            f"{self.player1.name} gana la pelea y aún le queda {self.player1.energy} de energía"
-                        )
+                    finish_game = self._run_player(self.player1, self.player2)
+                    if finish_game:
                         break
             else:
                 self.starts_player1 = True
             if self.starts_player2:
                 self.starts_player1 = True
                 if self.player2.movements:
-                    p2_move = self.player2.movements.popleft()
-                    p2_hit = self.player2.hits.popleft()
-                    if p2_move and not p2_hit:
-                        movements.append(f"{self.player2.name} se mueve")
-                    for move, hit, damage, name in self.player2.special_movements:
-                        if p2_move.endswith(move) and p2_hit == hit:
-                            self.player1.energy -= damage
-                            movements.append(f"{self.player2.name} da un {name}")
-                            break
-                    if self.player1.energy <= 0:
-                        movements.append(
-                            f"{self.player2.name} gana la pelea y aún le queda {self.player2.energy} de energía"
-                        )
+                    finish_game = self._run_player(self.player2, self.player1)
+                    if finish_game:
                         break
             else:
                 self.starts_player2 = True
-        return movements
+        return {
+            "movements": self.movements,
+            "winner": self.winner,
+        }
+
+    def _run_player(self, player1: Player, player2: Player) -> bool:
+        finish_game = False
+        p1_move = player1.movements.popleft()
+        p1_hit = player1.hits.popleft()
+        if p1_move and not p1_hit:
+            self.movements.append(f"{player1.name} se mueve")
+        else:
+            for move, hit, damage, name in player1.special_movements:
+                if p1_move.endswith(move) and p1_hit == hit:
+                    player2.energy -= damage
+                    self.movements.append(f"{player1.name} da un {name}")
+                    break
+        if player2.energy <= 0:
+            self.movements.append(f"{player1.name} gana la pelea y aún le queda {player1.energy} de energía")
+            self.winner = {
+                "name": player1.name,
+                "energy": player1.energy,
+            }
+            finish_game = True
+        return finish_game
