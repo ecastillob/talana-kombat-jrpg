@@ -1,0 +1,86 @@
+[
+	{
+		"input": {
+			"player1": {
+				"movimientos": ["D","DSD","S","DSD","SD"],
+				"golpes": ["K","P","","K","P"]
+			},
+			"player2": {
+				"movimientos": ["SA","SA","SA","ASA","SA"],
+				"golpes": ["K","","K","P","P"]
+			}
+		},
+		"output": {
+			"movements": [
+				"Tonyn da un Patada",
+				"Arnaldor da un Remuyuken",
+				"Tonyn da un Taladoken",
+				"Arnaldor se mueve",
+				"Tonyn se mueve",
+				"Arnaldor da un Remuyuken",
+				"Arnaldor gana la pelea y aún le queda 2 de energía"
+			],
+			"winner": {
+				"name": "Arnaldor",
+				"energy": 2
+			}
+		}
+	},
+	{
+		"input": {
+			"player1": {
+				"movimientos": ["SDD","DSD","SA","DSD"],
+				"golpes": ["K","P","K","P"]
+			},
+			"player2": {
+				"movimientos": ["DSD","WSAW","ASA","","ASA","SA"],
+				"golpes": ["P","K","K","K","P","k"]
+			}
+		},
+		"output": {
+			"movements": [
+				"Tonyn da un Patada",
+				"Arnaldor da un Puño",
+				"Tonyn da un Taladoken",
+				"Arnaldor da un Patada",
+				"Tonyn da un Patada",
+				"Arnaldor da un Remuyuken",
+				"Tonyn da un Taladoken",
+				"Tonyn gana la pelea y aún le queda 1 de energía"
+			],
+			"winner": {
+				"name": "Tonyn",
+				"energy": 1
+			}
+		}
+	},
+	{
+		"input": {
+			"player1": {
+				"movimientos": ["DSD","S"],
+				"golpes": ["P",""]
+			},
+			"player2": {
+				"movimientos": ["","ASA","DA","AAA","","SA"],
+				"golpes": ["P","","P","K","K","K"]
+			}
+		},
+		"output": {
+			"movements": [
+				"Tonyn da un Taladoken",
+				"Arnaldor da un Puño",
+				"Tonyn se mueve",
+				"Arnaldor se mueve",
+				"Arnaldor da un Puño",
+				"Arnaldor da un Patada",
+				"Arnaldor da un Patada",
+				"Arnaldor da un Remuyuken",
+				"Arnaldor gana la pelea y aún le queda 3 de energía"
+			],
+			"winner": {
+				"name": "Arnaldor",
+				"energy": 3
+			}
+		}
+	}
+]
