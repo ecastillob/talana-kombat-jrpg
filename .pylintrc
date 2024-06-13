@@ -35,7 +35,8 @@ good-names=df, i
 # C0115 : Missing class docstring (missing-class-docstring)
 # C0116 : Missing function or method docstring (missing-function-docstring)
 # F0010 : error while code parsing: Unable to load file __init__.py (parse-error)
-disable=C0114,C0115,C0116,F0010
+# R0903 : Too few public methods (too-few-public-methods)
+disable=C0114,C0115,C0116,F0010,R0903
 
 
 
