@@ -80,3 +80,35 @@ Eso realiza 3 acciones:
 1. ejecuta las pruebas unitarias
 1. genera un reporte por consola indicando la cobertura por cada archivo tomado en cuenta
 1. genera archivos html con el reporte detallado de cobertura de cada archivo tomado en cuenta
+
+
+## Uso del juego
+
+Se implementó una API REST con 1 endpoint para probar Talana Kombat JRPG.
+
+El endpoint (`POST /api/v1/kombat`) requiere que el *body* sea en formato JSON.
+
+Un ejemplo de invocación con algún cliente REST como Postman o Insomnia puede ser:
+- url: `http://127.0.0.1:8000/api/v1/kombat`
+- método: `POST`
+- *body*:
+```json
+{
+    "player1": {
+        "movimientos": ["D","DSD","S","DSD","SD"],
+        "golpes": ["K","P","","K","P"]
+    },
+    "player2": {
+        "movimientos": ["SA","SA","SA","ASA","SA"],
+        "golpes": ["K","","K","P","P"]
+    }
+}
+```
+
+### Docs
+
+Se ha generado un endpoint para documentación de la API en Swagger:
+`GET /api/v1/schema/swagger-ui`
+
+Para poder usar este endpoint, es necesario ejecutar el comando que recolecta los archivos estáticos para obtener los archivos estáticos asociados a Swagger:
+`python manage.py collectstatic`
