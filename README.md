@@ -13,7 +13,9 @@ golpe.
 
 ### Python
 
-Se requiere una versión de Python que sea mayor a 3.10 (por ejemplo 3.10.12) y menor a la 3.13 (como la 3.12.1 o la 3.11.3 por ejemplo).
+Se requiere una versión de Python que sea mayor a `3.10` (por ejemplo `3.10.12`) y menor a la `3.13` (como la `3.12.1` o la `3.11.3` por ejemplo).
+
+Este repo fue desarrollado con Python **3.12**.
 
 ### Paquetes
 
@@ -80,3 +82,42 @@ Eso realiza 3 acciones:
 1. ejecuta las pruebas unitarias
 1. genera un reporte por consola indicando la cobertura por cada archivo tomado en cuenta
 1. genera archivos html con el reporte detallado de cobertura de cada archivo tomado en cuenta
+
+
+## Docker
+
+Se ha agregado 2 archivos para levantar el proyecto mediante Docker compose: `Dockerfile` y `docker-compose.yml` que incluyen todos los comandos necesarios desde la instalación de Poetry hasta la ejecución de la API REST.
+
+Sin embargo, **es muy importante que el archivo `.env` esté dentro de la misma ruta donde está el archivo `manage.py` que es justamente donde está el archivo de ejemplo `.env.example`** 
+
+
+## Uso del juego
+
+Se implementó una API REST con 1 endpoint para probar Talana Kombat JRPG.
+
+El endpoint (`POST /api/v1/kombat`) requiere que el *body* sea en formato JSON.
+
+Un ejemplo de invocación con algún cliente REST como Postman o Insomnia puede ser:
+- url: `http://127.0.0.1:8000/api/v1/kombat`
+- método: `POST`
+- *body*:
+```json
+{
+    "player1": {
+        "movimientos": ["D","DSD","S","DSD","SD"],
+        "golpes": ["K","P","","K","P"]
+    },
+    "player2": {
+        "movimientos": ["SA","SA","SA","ASA","SA"],
+        "golpes": ["K","","K","P","P"]
+    }
+}
+```
+
+### Docs
+
+Se ha generado un endpoint para documentación de la API en Swagger:
+`GET /api/v1/schema/swagger-ui`
+
+Para poder usar este endpoint, es necesario ejecutar el comando que recolecta los archivos estáticos para obtener los archivos estáticos asociados a Swagger:
+`python manage.py collectstatic`

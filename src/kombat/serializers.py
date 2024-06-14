@@ -38,3 +38,13 @@ class PlayerSerializer(serializers.Serializer):
 class KombatSerializer(serializers.Serializer):
     player1 = PlayerSerializer()
     player2 = PlayerSerializer()
+
+
+class WinnerResponseSerializer(serializers.Serializer):
+    name = serializers.CharField()
+    energy = serializers.IntegerField()
+
+
+class KombatResponseSerializer(serializers.Serializer):
+    movements = serializers.ListField(child=serializers.CharField())
+    winner = WinnerResponseSerializer

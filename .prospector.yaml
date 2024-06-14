@@ -11,4 +11,4 @@ uses:
   - django
 
 ignore-paths:
-  - src/manage.py
+  - static/
