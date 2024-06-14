@@ -28,6 +28,7 @@ El listado de dependencias utilizadas es el siguiente:
 	* `Django`: framework web
 	* `djangorestframework`: API REST en Django
 	* `django-cors-headers`: CORS en Django
+	* `drf-spectacular`: Swagger en Django
 	* `python-decouple`: lee variables de entorno
 * dependencias secundarias (`[tool.poetry.group.dev.dependencies]`):
 	* `bandit`: análisis estático de seguridad del código
@@ -121,3 +122,26 @@ Se ha generado un endpoint para documentación de la API en Swagger:
 
 Para poder usar este endpoint, es necesario ejecutar el comando que recolecta los archivos estáticos para obtener los archivos estáticos asociados a Swagger:
 `python manage.py collectstatic`
+
+
+## Preguntas generales
+
+1. Supongamos que en un repositorio GIT hiciste un commit y olvidaste un archivo. Explica cómo se soluciona si hiciste push, y cómo si aún no hiciste. De ser posible, que quede solo un commit con los cambios.
+	- Utilizo la opción `--ammend` de `commit` de git
+		- Asumiento que no hice push:
+			- Asumiento que es 1 archivo el que requiero agregar al último commit: `git add filename && git commit --ammend`
+			- Asumiento que es más de 1 archivo el que requiero agregar al último commit: `git add . && git commit --ammend`
+		- Asumiento que ya hice push:
+			- Realizo los mismos pasos anteriores y hago push con la opción `--force`
+1. Si has trabajado con control de versiones ¿Cuáles han sido los flujos con los que has trabajado?
+	- Generalmente trabajo con 3 tipos de ramas
+		- la rama principal/prod: `master`
+		- la rama de desarrollo/pruebas/qa/dev: `develop`
+		- la rama que aborda una tarea en particular de un sprint, por ejemplo: `ABC-123-add-new-feature`
+	- Con esos 3 tipos de ramas, siempre trabajo mezclando el código mediante *Pull Requests* idealmente siendo revisado por otra persona.
+1. ¿Cuál ha sido la situación más compleja que has tenido con esto?
+	- Ninguna realmente compleja en realidad, siempre trato de ser bien ordenado en el desarrollo y respeto los lineamientos de desarrollo de la organización.
+1. ¿Qué experiencia has tenido con los microservicios?
+	- He desarrollado en repositorios en donde se utiliza servicios serverless de AWS como AWS ECS y AWS Lambda, utilizando Django o FastAPI en caso de requerir el desarrollo de una API REST.
+1. ¿Cuál es tu servicio favorito de GCP o AWS? ¿Por qué?
+	- Me encanta AWS Lambda, esa capacidad de escalar funciones de manera bastante rápida soportando alta concurencia es sencillamente fascinante.
