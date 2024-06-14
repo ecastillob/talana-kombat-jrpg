@@ -1,0 +1,67 @@
+[
+	{
+		"input": {
+			"player1": {
+				"movimientos": ["D","DSD","S","DSD","SD"],
+				"golpes": ["K","X","","K","P"]
+			},
+			"player2": {
+				"movimientos": ["SA","SA","SA","ASA","SA"],
+				"golpes": ["K","","K","P","P"]
+			}
+		},
+		"output": {
+			"error": {
+				"player1": {
+					"non_field_errors": [
+						"Uno de los botones presionados de un golpe es ilegal"
+					]
+				}
+			}
+		}
+	},
+	{
+		"input": {
+			"player1": {
+				"movimientos": ["X","DSD","S","DSD","SD"],
+				"golpes": ["K","P","","K","P"]
+			},
+			"player2": {
+				"movimientos": ["SA","SA","SA","ASA","SA"],
+				"golpes": ["K","","K","P","P"]
+			}
+		},
+		"output": {
+			"error": {
+				"player1": {
+					"non_field_errors": [
+						"Uno de los botones presionados de un movimiento es ilegal"
+					]
+				}
+			}
+		}
+	},
+	{
+		"input": {
+			"player1": {
+				"movimientos": ["DSDDSD","DSD","S","DSD","SD"],
+				"golpes": ["K","P","","K","P"]
+			},
+			"player2": {
+				"movimientos": ["SA","SA","SA","ASA","SA"],
+				"golpes": ["K","","K","P","P"]
+			}
+		},
+		"output": {
+			"error": {
+				"player1": {
+					"movimientos": {
+						"0": [
+							"Ensure this field has no more than 5 characters."
+						]
+					}
+				}
+			}
+		}
+	}
+]
