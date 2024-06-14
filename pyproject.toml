@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "talana-kombat-jrpg"
-version = "0.1.0"
+version = "0.2.0"
 description = "Talana Kombat es un juego donde 2 personajes se enfrentan hasta la muerte."
 authors = ["Erick Castillo <ecastillo.ecb@gmail.com>"]
 readme = "README.md"
@@ -12,6 +12,7 @@ python = ">3.10, <3.13"
 Django = ">4.2, <5"
 djangorestframework = "^3.15.1"
 django-cors-headers = "^4.3.1"
+drf-spectacular = {extras = ["sidecar"], version = "^0.27.2"}
 python-decouple = "^3.8"
 
 
